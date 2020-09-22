@@ -2,8 +2,12 @@ const express = require('express');
 const http = require('http');
 const path = require('path');
 const request = require('request');
+const appInsights = require("applicationinsights");
 
 const app = express();
+
+appInsights.setup("f06b6ed5-76a8-42ab-8742-323148b75714");
+appInsights.start();
 
 app.use(express.static(path.join(__dirname, 'dist/content-web')));
 const contentApiUrl = process.env.CONTENT_API_URL || "http://23.102.26.167:3001";
